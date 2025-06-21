@@ -14,6 +14,16 @@ class Navigation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class Page(models.Model):
+    page_title = models.TextField(max_length=200)
+    page_slug = models.SlugField(max_length=200, unique=True)
+    page_content = models.TextField()
+    page_sequence = models.IntegerField(default=0)
+    page_navigation = models.ForeignKey(Navigation, on_delete=models.CASCADE, related_name='pages', null=True, blank=True)
+    page_is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.page_title
 
 class WorkExperience(models.Model):
     experience_role = models.TextField(max_length=200)

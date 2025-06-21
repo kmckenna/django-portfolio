@@ -3,14 +3,20 @@ from tinymce.widgets import TinyMCE
 from django.db import models
 
 # Register your models here.
-from .models import WorkExperience, Section, Skill, Project, Specialization, Navigation, Proficiency, Course, Source
+from .models import WorkExperience, Section, Skill, Project, Specialization, Navigation, Proficiency, Course, Source, Page
 
 class WorkExperienceModelAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 20})}
     }
 
+class PageModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 20})}
+    }
+
 admin.site.register(WorkExperience, WorkExperienceModelAdmin)
+admin.site.register(Page, PageModelAdmin)
 
 # admin.site.register(WorkExperience)
 admin.site.register(Skill)

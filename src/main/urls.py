@@ -5,10 +5,12 @@ from . import views
 
 urlpatterns = [
     # path("", views.IndexView.as_view(), name="index"),
-    path("", TemplateView.as_view(template_name="index.html")),
-    path(r"portfolio", TemplateView.as_view(template_name="portfolio.html")),
+    path('', views.index, name='index'),
+    path('curriculum/', views.curriculum_overview, name='curriculum'),
+    path("portfolio", TemplateView.as_view(template_name="portfolio.html")),
     path("skills", TemplateView.as_view(template_name="skills.html")),
     path("experience", TemplateView.as_view(template_name="experience.html")),
     path("education", TemplateView.as_view(template_name="education.html")),
+    path("curriculum/", views.curriculum_overview, name="curriculum"),
     # path("", views.index, name="index"),
 ]

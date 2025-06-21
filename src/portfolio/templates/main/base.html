@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}My Portfolio – Katrina{% endblock %}</title>
+  {% load static %}
   {% load bootstrap5 %}
   {% bootstrap_css %}
-  {% bootstrap_javascript %}
-  {% load active_link_tags %}
-  {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  {% bootstrap_javascript %}
 </head>
+
 <body>
 
 {% include 'partials/_header.html' %}
 {% include 'partials/_nav.html' with request=request %}
--
 
     <div class="container py-5 main">
         <main>
@@ -25,6 +26,6 @@
 
 {% include 'partials/_footer.html' %}
 
-</div>
+
 </body>
 </html>

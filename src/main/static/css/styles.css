@@ -5,6 +5,35 @@ body {
     background-color: #fff;
 }
 
+
+h1, h2 {
+  display: inline-block;
+  border-bottom: 3px solid #a970ff;
+  padding-bottom: 0;
+  color: #2a2a2a;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  /* margin-left: -5px; */
+}
+
+h2 {
+  font-size: 1.75rem;
+  /* margin-left: 3px; */
+}
+
+.underline-accent {
+  box-shadow: 0 -4px 0 0 #c7a8ff inset; /* pale lavender */
+  display: inline;
+
+}
+
+.heading-wrapper {
+  margin-bottom: 1rem;
+}
 .site-header {
     background-color: #180233; 
     background-size:contain;
@@ -12,8 +41,23 @@ body {
     background-repeat:no-repeat;
     background-position: right;
     padding-right: 0;
+    padding-left: .5rem;
     color: #ffffff;
-    padding: 2rem 0;
+    padding: 2rem;
+}
+.site-header-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    border-bottom: 0;
+}
+
+.lead {
+    color: #e0e0e0;
+    margin-top: 0;
+    font-style: italic;
+    margin-left: -0.1rem;
 }
 
 .site-header::after {
@@ -92,7 +136,7 @@ body {
 
 
 .site-footer {
-    background-color: #180233; /* dark gray */
+    background-color: #180233; 
     color: #cccccc;
     padding: 1rem 0;
     text-align: center;
@@ -105,9 +149,8 @@ body {
   border-bottom: 2px solid #a970ff;
   display: inline-block;
   padding-bottom: 0.25rem;
-  color: #e0e0e0;
 }
-.section-light {
+
 .section-light {
   background-color: #1b1b1b;
   border-radius: 8px;
@@ -121,7 +164,32 @@ body {
   display: inline-block;
   padding-bottom: 0.3rem;
   margin-bottom: 1rem;
-  color: #e0e0e0;
+  color: #54278b; 
+}
+
+.specialization-card {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px rgba(169, 112, 255, 0.05);
+}
+/* Specialization name */
+.specialization-card h3 {
+  color: #d0b3ff; /* muted lilac */
+}
+
+.specialization-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #a970ff; /* your signature purple */
+}
+
+.source-badge {
+  background-color: #a970ff;
+  color: #fff;
+}
+.course-list li {
+  color: #ccc;
+  margin-bottom: 0.25rem;
 }
 
 .project-card {
@@ -138,12 +206,13 @@ body {
 
 .highlight {
   border-left: 4px solid #a970ff;
-  background-color: #1f1f1f;
+  background-color: #2f2f2f;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 1rem 3rem;
+  border-radius: 6px;
   font-style: italic;
-  color: #ccc;
-}
+    color: #ccc;
+  }
 
 .custom-link {
   color: #a970ff;
@@ -154,3 +223,83 @@ body {
   color: #fff;
   border-bottom: 1px solid #fff;
 }
+.blockquote-course {
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  border-left: 4px solid #a970ff;
+  background-color: #2a2a2a;
+  padding: 1rem 2rem;
+  margin: 1.5rem 0;
+  color: #dcdcdc;
+  position: relative;
+}
+
+.blockquote-course::before {
+  content: "“";
+  font-size: 3rem;
+  position: absolute;
+  left: 2px;
+  top: 4px;
+  color: #a970ff;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.blockquote-course::after {
+  content: "”";
+  font-size: 3rem;
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+  color: #a970ff;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.styled-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.styled-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #dcdcdc;
+}
+
+.course-title {
+  font-weight: 500;
+}
+
+.course-date {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.completed-courses {
+  list-style: none;
+  padding-left: 0;
+}
+
+.completed-courses li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #ddd;
+}
+
+.completed-courses li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #a970ff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
