@@ -1,0 +1,53 @@
+{% for specialization in section.specializations.all %}
+
+<div class="specialization-block specialization-card mb-4 p-3 rounded">
+    <!-- Toggle Trigger -->
+    <div role="button"
+        tabindex="0"
+        class="specialization-header d-flex align-items-center justify-content-between"
+        data-bs-toggle="collapse"
+        data-bs-target="#specialization-{{ specialization.id }}"
+        aria-expanded="false"
+        aria-controls="specialization-{{ specialization.id }}">          
+    
+    <div class="d-flex align-items-center">
+        <i class="fa-solid fa-caret-right arrow-icon me-2"></i>
+        <h3 class="mb-0 specialization-title">{{ specialization.specialization_name }}</h3>
+    </div>
+    <span class="badge source-badge text-end">
+        {% if specialization.source.source_parent %}
+        {{ specialization.source.source_parent.source_name }} → {{ specialization.source.source_name }}
+        {% else %}
+        {{ specialization.source.source_name }}
+        {% endif %}
+    </span>
+    </div>
+
+    <!-- Collapsible Content -->
+    <div id="specialization-{{ specialization.id }}" class="collapse mt-2">
+        <blockquote class="blockquote-course">
+            {{ specialization.specialization_description }}
+            <small class="text-muted">
+                — from 
+                {% if specialization.source.source_parent %}
+                {{ specialization.source.source_parent.source_name }} → {{ specialization.source.source_name }}
+                {% else %}
+                {{ specialization.source.source_name }}
+                {% endif %}
+
+            </small>
+        </blockquote>
+        <p class="text-muted">This specialization includes the following courses:</p>
+        <ul class="course-list ps-3 completed-courses">
+        {% for course in specialization.courses.all %}
+            <li>
+            <span class="course-title">{{ course.course_name }}</span>
+            {% if course.course_completion_date %}
+                <span class="course-date">({{ course.course_completion_date|date:"F Y" }})</span>
+            {% endif %}
+            </li>              
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endfor %}

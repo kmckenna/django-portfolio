@@ -7,6 +7,8 @@
   {% load static %}
   {% load bootstrap5 %}
   {% bootstrap_css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   {% bootstrap_javascript %}
 </head>
@@ -16,7 +18,7 @@
 {% include 'partials/_header.html' %}
 {% include 'partials/_nav.html' with request=request %}
 
-    <div class="container py-5 main">
+    <div class="container main">
         <main>
             {% block content %}
             <!-- Default content can go here -->

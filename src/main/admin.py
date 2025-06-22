@@ -1,24 +1,11 @@
 from django.contrib import admin
 from tinymce.widgets import TinyMCE
-from django.db import models
+from adminsortable2.admin import SortableAdminMixin
 
+from .models import WorkExperience, Section, Skill, Project, Specialization, \
+    Navigation, Proficiency, Course, Source, Page, Technology
 # Register your models here.
-from .models import WorkExperience, Section, Skill, Project, Specialization, Navigation, Proficiency, Course, Source, Page
-
-class WorkExperienceModelAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 20})}
-    }
-
-class PageModelAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 20})}
-    }
-
-admin.site.register(WorkExperience, WorkExperienceModelAdmin)
-admin.site.register(Page, PageModelAdmin)
-
-# admin.site.register(WorkExperience)
+admin.site.register(WorkExperience)
 admin.site.register(Skill)
 admin.site.register(Section)
 admin.site.register(Project)
@@ -27,3 +14,5 @@ admin.site.register(Navigation)
 admin.site.register(Proficiency)
 admin.site.register(Course)
 admin.site.register(Source)
+admin.site.register(Technology)
+admin.site.register(Page)

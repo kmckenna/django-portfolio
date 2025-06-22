@@ -8,31 +8,32 @@ body {
 
 h1, h2 {
   display: inline-block;
-  border-bottom: 3px solid #a970ff;
   padding-bottom: 0;
   color: #2a2a2a;
   font-weight: 700;
   letter-spacing: -0.5px;
+  margin: 0;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   /* margin-left: -5px; */
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   /* margin-left: 3px; */
 }
 
-.underline-accent {
-  box-shadow: 0 -4px 0 0 #c7a8ff inset; /* pale lavender */
-  display: inline;
-
+h3 {
+  font-size: 1.25rem;
+  /* margin-left: 3px; */
 }
 
 .heading-wrapper {
   margin-bottom: 1rem;
+  padding-bottom: 0;
+  border-bottom: 3px solid #a970ff;
 }
 .site-header {
     background-color: #180233; 
@@ -143,13 +144,7 @@ h2 {
     font-size: 0.875rem;
 }
 
-.main h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #a970ff;
-  display: inline-block;
-  padding-bottom: 0.25rem;
-}
+
 
 .section-light {
   background-color: #1b1b1b;
@@ -186,6 +181,7 @@ h2 {
 .source-badge {
   background-color: #a970ff;
   color: #fff;
+  white-space: nowrap;
 }
 .course-list li {
   color: #ccc;
@@ -303,3 +299,86 @@ h2 {
   font-weight: bold;
 }
 
+
+
+.section-toggle {
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.underline-accent {
+  display: inline-block;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  color: #a970ff;
+}
+
+/* Rotate when expanded */
+.section-toggle[aria-expanded="true"] .arrow-icon {
+  transform: rotate(90deg);
+}
+
+.specialization-header {
+  cursor: pointer;
+  width: 100%;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  color: #a970ff;
+}
+
+/* Rotate when open */
+.specialization-header[aria-expanded="true"] .arrow-icon {
+  transform: rotate(90deg);
+}
+.intro-text.intro-text {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.what-i-do-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.what-i-do-item {
+  display: flex;
+  align-items: center;
+  max-width: 700px;
+}
+
+.what-i-do-item.left {
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.what-i-do-item.right {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+.what-i-do-item .icon {
+  font-size: 2rem;
+  color: #a970ff;
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+
+.what-i-do-item .text {
+  background-color: #f9f9f9;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}

@@ -4,7 +4,8 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
-from .models import WorkExperience, Section, Skill, Project, Specialization, Navigation, Proficiency, Course, Source
+from .models import WorkExperience, Section, Skill, Project, Specialization, Navigation, Proficiency \
+    , Course, Source, Technology
 
 
 # class IndexView(generic.ListView):
@@ -28,4 +29,8 @@ def curriculum_overview(request):
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    what_i_do = Technology.objects.all()
+    return render(request, 'main/index.html', {
+        'what_i_do': what_i_do
+    })
+
