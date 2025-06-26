@@ -1,26 +1,48 @@
 {% extends 'base.html' %}
+{% load custom_tags %}
 
 {% block content %}'
 
   {% include "../partials/_page_title.html" with title="Skills"%}
+<div class="proficiency-legend mb-4 text-muted" style="font-size: 0.85rem;">
+  <strong>Proficiency:</strong>
+  <span class="legend-item"><span class="dot filled"></span> Beginner</span>
+  <span class="legend-item">
+    <span class="dot filled"></span><span class="dot filled"></span> Novice
+  </span>
+  <span class="legend-item">
+    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span> Intermediate
+  </span>
+  <span class="legend-item">
+    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span> Proficient
+  </span>
+  <span class="legend-item">
+    <span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span> Expert
+  </span>
+</div>
+
   {% for section in sections %}
     {% if section.skills.all %}
       <section class="mb-3 pb-3">
         {% include "main/section/section_heading.html" %}
         <div id="section-{{ section.id }}" class="collapse show">
-            <ul>
+            <ul class="fa-ul skills-list">
                 {% for skill in section.skills.all %}
                 <li class="skill-item">
-                    {{ skill.skill_name }}
-                    {% if skill.skill_proficiency %}
-                        — <span class="text-muted">{{ skill.skill_proficiency.proficiency_name }}</span>
-                    {% endif %}
 
-            <span class="skill-dots">
-                <i class="fa-solid fa-circle filled"></i>
-                <i class="fa-solid fa-circle filled"></i>
-                <i class="fa-solid fa-circle unfilled"></i>
-            </span>
+                    <span class="fa-li">
+                        <i class="{{ section_icons|get_item:section.section_name }} text-purple"></i>
+                    </span>                    
+                    {{ skill.skill_name }} — 
+
+                    <span class="skill-dots ms-2">
+                    {% for i in "12345" %}
+                    {% with i|add:"0"|to_int as dot_level %}
+                        <span class="dot{% if dot_level <= skill.skill_proficiency.proficiency_level %} filled{% endif %}"></span>
+                    {% endwith %}
+                    {% endfor %}
+                    </span>
+
                     {% if skill.skill_description %}
                         <span class="text-muted">{{ skill.skill_description }}</span>
                     {% endif %}

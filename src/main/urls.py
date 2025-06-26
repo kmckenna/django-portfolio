@@ -9,6 +9,7 @@ urlpatterns = [
     path('curriculum/', views.curriculum_overview, name='curriculum'),
     path('skills/', views.skills_overview, name='skills'),
     path('projects/', views.projects_overview, name='projects'),
+    path('experience/', views.experience_overview, name='experience'),
     # path("portfolio", TemplateView.as_view(template_name="portfolio.html")),
     # path("skills", TemplateView.as_view(template_name="skills.html")),
     # path("experience", TemplateView.as_view(template_name="experience.html")),

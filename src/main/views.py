@@ -52,8 +52,21 @@ def skills_overview(request):
         )
     ).filter(is_active=True).order_by('sequence')
 
+    section_icons = {
+        'Programming': 'fa-solid fa-code',
+        'Databases': 'fa-solid fa-database',
+        'Security': 'fa-solid fa-shield-halved',
+        'Web Design': 'fa-solid fa-palette',
+        'Frameworks': 'fa-solid fa-cubes',
+        'Tools & Workflow': 'fa-solid fa-screwdriver-wrench',
+        'APIs & Integration': 'fa-solid fa-plug',
+        'Data & Analytics': 'fa-solid fa-chart-line',
+        'Cloud & Hosting': 'fa-solid fa-cloud',
+    }
+
     return render(request, 'main/skills.html', {
         'sections': sections,
+        'section_icons': section_icons,
     })
 
 def projects_overview(request):
@@ -70,5 +83,12 @@ def projects_overview(request):
     })
 
 
+def experience_overview(request):
+    workexperience = WorkExperience.objects.filter(is_active=True).order_by('sequence')
+
+
+    return render(request, 'main/experience.html', {
+        'workexperience': workexperience,
+    })
 
 
