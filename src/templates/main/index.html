@@ -7,9 +7,9 @@
     <div>
       <h1 class="hero-heading mb-3">Building backend systems with clarity, precision, and purpose.</h1>
       <p class="intro-text">I’m Katrina—a backend-focused developer who transforms complexity into clean, scalable architecture. Let’s build something brilliant.</p>
-      <a href="#curriculum" class="btn btn-primary mt-3">Explore My Curriculum</a>
+      <a href="#curriculum" class="btn btn-purple">Explore My Curriculum</a>
     </div>
-    <img src="{% static 'img/code-graphic.svg' %}" alt="Backend Code Illustration" class="hero-graphic d-none d-md-block ms-4">
+    <img src="{% static 'img/python_code_2.png' %}" alt="Backend Code Illustration" class="hero-graphic d-none d-md-block ms-4">
   </div>
 </section>
 
@@ -21,7 +21,7 @@
       </div>
       <div class="text">
         <h4>{{ item.technology_name }}</h4>
-        <p>{{ item.technology_description }}</p>
+        <p>{{ item.technology_description|safe }}</p>
       </div>
     </div>
   {% endfor %}

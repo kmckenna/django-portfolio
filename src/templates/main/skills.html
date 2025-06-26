@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}'
+
+  {% include "../partials/_page_title.html" with title="Skills"%}
+  {% for section in sections %}
+    {% if section.skills.all %}
+      <section class="mb-3 pb-3">
+        {% include "main/section/section_heading.html" %}
+        <div id="section-{{ section.id }}" class="collapse show">
+            <ul>
+                {% for skill in section.skills.all %}
+                <li class="skill-item">
+                    {{ skill.skill_name }}
+                    {% if skill.skill_proficiency %}
+                        — <span class="text-muted">{{ skill.skill_proficiency.proficiency_name }}</span>
+                    {% endif %}
+
+            <span class="skill-dots">
+                <i class="fa-solid fa-circle filled"></i>
+                <i class="fa-solid fa-circle filled"></i>
+                <i class="fa-solid fa-circle unfilled"></i>
+            </span>
+                    {% if skill.skill_description %}
+                        <span class="text-muted">{{ skill.skill_description }}</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

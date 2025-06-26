@@ -2,14 +2,14 @@
 
 {% block content %}'
 
-  {% include "partials/page_title.html" with title="Curriculum Overview"%}
+  {% include "../partials/_page_title.html" with title="Curriculum Overview"%}
 
   {% for section in sections %}
     {% if section.specializations.all %}
       <section class="mb-3 pb-3">
-        {% include "partials/section_heading.html" %}
+        {% include "main/section/section_heading.html" %}
         <div id="section-{{ section.id }}" class="collapse show">
-            {% include "partials/specialization_loop.html" %}
+            {% include "main/curriculum_specialization_loop.html" %}
         </div>
       </section>
     {% endif %}

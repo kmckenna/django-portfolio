@@ -15,10 +15,10 @@
         <h3 class="mb-0 specialization-title">{{ specialization.specialization_name }}</h3>
     </div>
     <span class="badge source-badge text-end">
-        {% if specialization.source.source_parent %}
-        {{ specialization.source.source_parent.source_name }} → {{ specialization.source.source_name }}
+        {% if specialization.specialization_source.source_parent %}
+        {{ specialization.specialization_source.source_parent.source_name }} → {{ specialization.specialization_source.source_name }}
         {% else %}
-        {{ specialization.source.source_name }}
+        {{ specialization.specialization_source.source_name }}
         {% endif %}
     </span>
     </div>
@@ -29,10 +29,10 @@
             {{ specialization.specialization_description }}
             <small class="text-muted">
                 — from 
-                {% if specialization.source.source_parent %}
-                {{ specialization.source.source_parent.source_name }} → {{ specialization.source.source_name }}
+                {% if specialization.specialization_source.source_parent %}
+                {{ specialization.specialization_source.source_parent.source_name }} → {{ specialization.specialization_source.source_name }}
                 {% else %}
-                {{ specialization.source.source_name }}
+                {{ specialization.specialization_source.source_name }}
                 {% endif %}
 
             </small>

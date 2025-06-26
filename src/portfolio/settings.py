@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'bootstrap5',
+    'adminsortable2',
     'active_link',
     'tinymce',
     'main',
@@ -55,16 +57,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "portfolio.urls"
 
+# Templates Directory
+# TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        'DIRS': [BASE_DIR/'portfolio/templates/main',
-                BASE_DIR/'portfolio/templates',
-                BASE_DIR/'main/templates',
-                BASE_DIR/'main/templates/portfolio',
-                 BASE_DIR/'main/templates/main',
-                BASE_DIR/'curriculum/templates',
-                BASE_DIR/'tinymce/templates'],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -127,6 +126,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -139,8 +143,8 @@ TINYMCE_DEFAULT_CONFIG = {
     "menubar": False,
     "plugins": "link image preview code",
     "toolbar": [
-        "undo redo | formatselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist outdent indent | link image table",
-        "code preview",
+        "undo redo | formatselect | styles | bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist",
+        "fontfamily | fontsizeinput | styles | link image table | code preview | outdent indent",
     ],
     "valid_elements": "*[*]",  # allow all tags and attributes
     "extended_valid_elements": "*[*]",
