@@ -4,20 +4,9 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 
-
-
-
 from .models import WorkExperience, Section, Skill, Project, Specialization, Navigation, Proficiency \
     , Course, Source, Technology
 
-
-# class IndexView(generic.ListView):
-#     template_name = "main/index.html"
-#     context_object_name = "latest_question_list"
-
-#     def get_queryset(self):
-#         """Return the last five published questions."""
-#         return Question.objects.order_by("-pub_date")[:5]
 
 def index(request):
     what_i_do = Technology.objects.filter(is_active=True)
@@ -73,13 +62,27 @@ def projects_overview(request):
     sections = Section.objects.prefetch_related(
         Prefetch(
             'projects',
-            queryset=Project.objects.filter(is_active=True).order_by('sequence')
+            queryset=Project.objects.filter(is_active=True)
+                .order_by('sequence')
+                .prefetch_related('project_skills')
+                    .filter(is_active=True)
+                    .order_by('sequence')
         )
     ).filter(is_active=True).order_by('sequence')
 
-
     return render(request, 'main/projects.html', {
         'sections': sections,
+    })
+
+def project_detail(request, id):
+    project = get_object_or_404(
+        Project.objects.prefetch_related('project_skills'),
+        id=id,
+        is_active=True
+    )
+
+    return render(request, 'main/project_detail.html', {
+        'project': project,
     })
 
 

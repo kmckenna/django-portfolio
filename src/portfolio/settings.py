@@ -26,7 +26,8 @@ SECRET_KEY = "django-insecure-m-fl&k0f^%ib_=kau_tdei=2k4c6jv_w+$f5^x+ei-v&$m9=p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "debug_toolbar",
     'bootstrap5',
     'adminsortable2',
     'active_link',
@@ -48,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -120,6 +123,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -138,10 +149,10 @@ TINYMCE_DEFAULT_CONFIG = {
     "height": "400px",
     "width": "100%",
     "menubar": False,
-    "plugins": "link image preview code",
+    "plugins": "link image preview code lists",
     "toolbar": [
-        "undo redo | formatselect | styles | bold italic underline | forecolor backcolor | alignleft aligncenter alignright | bullist numlist",
-        "fontfamily | fontsizeinput | styles | link image table | code preview | outdent indent",
+        "undo redo | formatselect | styles | bold italic underline | forecolor backcolor | alignleft aligncenter alignright",
+        "fontfamily | fontsizeinput | styles | link image table | code preview | outdent indent | numlist bullist",
     ],
     "valid_elements": "*[*]",  # allow all tags and attributes
     "extended_valid_elements": "*[*]",

@@ -485,3 +485,56 @@ ul.skills-list {
 }
 
 
+.badge {
+  display: inline-block;
+  background-color: #f3eaff;
+  color: #5a2bb5;
+  padding: 0.25rem 0.6rem;
+  margin: 0.2rem 0.3rem 0 0;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  /* object-fit: cover; */
+}
+.project-carousel img {
+  margin-bottom: 1rem;
+  /* border-radius: 1.5rem; */
+  width: 100%;
+  /* object-fit: cover; */
+  object-position: center;
+}
+
+.project-carousel {
+  margin-bottom: 2rem;
+  /* border-radius: 1.5rem; */
+  overflow: hidden;
+}
+.carousel-inner{
+  padding: 1.5rem;
+  /* max-height: 500px; */
+}
+
+.project-image img {
+  /* border: 1px solid #ddd; Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+  margin: 1rem;
+}
+
+.project-image {
+  width: 175px;
+  float: left;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}

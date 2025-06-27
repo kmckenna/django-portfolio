@@ -42,6 +42,16 @@
                     {% endwith %}
                     {% endfor %}
                     </span>
+{% if skill.projects.all %}
+  <div class="mt-1">
+    <small class="text-muted">Used in:</small>
+    {% for project in skill.projects.all %}
+      <a href="{% url 'project_detail' project.id %}" class="badge text-decoration-none">
+        {{ project.project_name }}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}
 
                     {% if skill.skill_description %}
                         <span class="text-muted">{{ skill.skill_description }}</span>

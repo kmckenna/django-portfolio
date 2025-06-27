@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}'
+
+{% include "../partials/_page_title.html" with title="Project: "|add:project.project_name %}
+
+<div class="project-card">
+    <h3 class="project-title">{{ project.project_name }}</h3>
+    <p class="project-description">{{ project.project_description|safe }}</p>
+
+    {% if project.project_skills.all %}
+        <div class="project-skills">
+        <strong>Skills Used:</strong>
+        {% for skill in project.project_skills.all %}
+
+            <span class="badge" title="{{ skill.skill_proficiency.proficiency_name }}">
+            {{ skill.skill_name }}
+            </span>
+
+        {% endfor %}
+        </div>
+    {% endif %}
+
+
+    {% if project.images.all %}
+    <div id="projectCarousel{{ project.id }}" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for image in project.images.all %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ image.caption }}">
+            {% if image.caption %}
+            <div class="carousel-caption d-none d-md-block">
+                <p>{{ image.caption }}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel{{ project.id }}" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel{{ project.id }}" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="text-purple">Oops—project not found.</h1>
+  <p>It looks like this project isn’t available or may have been moved.</p>
+  <blockquote class="text-muted mt-4" style="font-style: italic;">
+    "Success is not final, failure is not fatal: It is the courage to continue that counts." — Winston Churchill
+  </blockquote>  
+  <a href="{% url 'projects_overview' %}" class="btn btn-outline-primary mt-3">Back to Projects</a>
+{% endblock %}

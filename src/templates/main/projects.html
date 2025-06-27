@@ -1,9 +1,67 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
 
+<!-- <div class="project-card">
+  <h3 class="project-title">Personal Portfolio Platform</h3>
+
+  <p class="project-description">
+    A custom-designed portfolio built with Django, HTML/CSS, and Jinja templates. This site showcases my technical range and aesthetic sensibilities, including dynamic content rendering, responsive layouts, modular components, and styled Django filters for visualized skill proficiencies.
+  </p>
+
+  <div class="project-skills mt-2">
+    <strong>Skills Used:</strong>
+    <span class="badge">Django</span>
+    <span class="badge">Python</span>
+    <span class="badge">SQL</span>
+    <span class="badge">HTML/CSS</span>
+    <span class="badge">Template Filters</span>
+    <span class="badge">Responsive Design</span>
+    <span class="badge">Font Awesome</span>
+  </div>
+</div> -->
+
+
 {% block content %}'
 
   {% include "../partials/_page_title.html" with title="Projects"%}
+  {% for section in sections %}
+    {% if section.projects.all %}
+      <section class="mb-3 pb-3">
+        {% include "main/section/section_heading.html" %}
+        <div id="section-{{ section.id }}" class="collapse show">
 
+        {% for project in section.projects.all %}
+          <div class="project-card">
+            <h3 class="project-title"><a class="nav-link" href="{% url 'project_detail' project.id %}">{{ project.project_name }}</a></h3>
+            <p class="project-description">{{ project.project_description|safe }}</p>
+
+            {% if project.project_skills.all %}
+              <div class="project-skills">
+                <strong>Skills Used:</strong>
+                {% for skill in project.project_skills.all %}
+
+                    <span class="badge" title="{{ skill.skill_proficiency.proficiency_name }}">
+                    {{ skill.skill_name }}
+                    </span>
+
+                {% endfor %}
+              </div>
+            {% endif %}
+            
+            <div class="clearfix">
+                {% for image in project.images.all %}
+                    <div class="project-image">
+                        <img src="{{ image.image.url }}" alt="{{ project.project_name }}" class="project-thumbnail">
+                    </div>
+                {% endfor %}
+            </div>            
+
+          </div>
+        {% endfor %}
+
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
 
 {% endblock %}

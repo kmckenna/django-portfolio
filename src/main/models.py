@@ -77,12 +77,23 @@ class Project(BaseModel):
     project_link = models.TextField(max_length=200)
     # Foreign key to ProjectSection
     project_section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='projects')
+    project_skills = models.ManyToManyField('Skill', related_name='projects', blank=True)
 
     def __str__(self):
         return self.project_name
 
     class Meta:
         ordering = ['sequence']
+
+class ProjectImage(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='project_images/')
+    caption = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return f"{self.project.project_name} Image"
+
+
 
 class Source(BaseModel):
     source_name = models.TextField(max_length=200)
