@@ -10,7 +10,6 @@ class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
     extra = 1
 
-
 @admin.register(Specialization)
 class SpecializationAdmin(admin.ModelAdmin):
     list_display = ['specialization_name', 'specialization_section', 'is_active']
@@ -20,13 +19,14 @@ class SpecializationAdmin(admin.ModelAdmin):
         Specialization.specialization_description: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
     }
 
+
 @admin.register(Project)
 class SortableProjectAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ['project_name', 'project_section', 'is_active', 'sequence']
     list_filter = ['project_section', 'is_active']
     search_fields = ['project_name', 'project_section__section_name']
 
-    filter_horizontal = ('project_skills',)  # ✅ Add this line
+    filter_horizontal = ('project_skills',)  
     inlines = [ProjectImageInline]
     
     formfield_overrides = {
@@ -38,6 +38,9 @@ class WorkExperienceAdmin(admin.ModelAdmin):
     list_display = ['experience_role', 'experience_company_name', 'is_active', 'sequence']
     list_filter = ['is_active']
     search_fields = ['experience_role', 'experience_company_name']
+
+    filter_horizontal = ('experience_skills',)  
+
     formfield_overrides = {
         WorkExperience.experience_description: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
     }

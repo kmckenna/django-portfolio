@@ -524,12 +524,12 @@ ul.skills-list {
   /* border: 1px solid #ddd; Gray border */
   border-radius: 4px;  /* Rounded border */
   padding: 5px; /* Some padding */
-  width: 150px; /* Set a small width */
+  width: 125px; /* Set a small width */
   margin: 1rem;
 }
 
 .project-image {
-  width: 175px;
+  width: 135px;
   float: left;
 }
 
@@ -538,3 +538,138 @@ ul.skills-list {
   display: table;
   clear: both;
 }
+
+.project-links .btn {
+  font-weight: 500;
+  border-radius: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  transition: background-color 0.2s ease;
+}
+
+.project-links .btn:hover {
+  opacity: 0.9;
+}
+
+.project-detail-link {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  background-color: #ece4ff;
+  color: #5a2bb5;
+  border-radius: 0.4rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.project-detail-link:hover {
+  background-color: #d5c4ff;
+  color: #421f94;
+}
+
+.experience-card {
+  background-color: #f9f7fc;
+  border: 1px solid #e1dff1;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 1px 4px rgba(90, 43, 181, 0.06);
+}
+
+.experience-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #381f78;
+}
+
+.experience-dates {
+  font-size: 0.9rem;
+  color: #6c6a80;
+  margin-bottom: 0.5rem;
+}
+
+.experience-company-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4a426a;
+  margin-bottom: 0.75rem;
+}
+
+.experience-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #2d2b3c;
+}
+
+.experience-skills {
+  font-size: 0.85rem;
+}
+
+.experience-skills strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #44425a;
+}
+
+.experience-skills .badge {
+  display: inline-block;
+  margin: 0.2rem 0.4rem 0.4rem 0;
+  background-color: #e7dbff;
+  color: #3b2594;
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s ease;
+}
+
+.experience-skills .badge:hover {
+  background-color: #d6c7ff;
+}
+
+.experience-company-name.anon {
+  /* font-style: italic; */
+  color: #6c6a80;
+}
+
+.experience-company-name,
+.experience-dates,
+.experience-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.experience-separator {
+  border: none;
+  border-top: 1px solid #cfcbe6;
+  margin: 2rem 0;
+  opacity: 0.6;
+}
+
+.experience-wrapper {
+  border-left: 2px solid #d6c7ff;
+  padding-left: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.experience-card::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #7a5dd1;
+  border-radius: 50%;
+  position: absolute;
+  left: -1.1rem;
+  top: 1.2rem;
+}
+
+.experience-context {
+  font-style: italic;
+  color: #7c78a0;
+  font-size: 0.9rem;
+}
+

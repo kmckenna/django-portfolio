@@ -7,6 +7,20 @@
 <div class="project-card">
     <h3 class="project-title">{{ project.project_name }}</h3>
     <p class="project-description">{{ project.project_description|safe }}</p>
+    
+    <div class="project-links mb-2">
+    {% if project.project_link and project.project_show_link %}
+        <a href="{{ project.project_link }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">
+        🌐 Visit Site
+        </a>
+    {% endif %}
+
+    {% if project.project_github_link and project.project_show_github_link %}
+        <a href="{{ project.project_github_link }}" target="_blank" class="btn btn-sm btn-outline-secondary">
+        <i class="fab fa-github"></i> GitHub Repo
+        </a>
+    {% endif %}
+    </div>
 
     {% if project.project_skills.all %}
         <div class="project-skills">
@@ -36,6 +50,7 @@
         </div>
         {% endfor %}
     </div>
+        <div class="proje
     <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel{{ project.id }}" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
     </button>

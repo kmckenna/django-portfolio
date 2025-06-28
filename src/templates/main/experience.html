@@ -5,5 +5,49 @@
 
   {% include "../partials/_page_title.html" with title="Work Experience"%}
 
+        {% for experience in experiences.all %}
+          <div class="experience-card">
+            <h3 class="experience-title">👩‍💻 {{ experience.experience_role }}</h3>
+            <!-- <div class="experience-dates">📅 {{ experience.experience_dates }}</div> -->
+
+            <div class="experience-dates">
+              📅 {{ experience.experience_dates }}
+              {% if experience.experience_context %}
+                <span class="experience-context"> • {{ experience.experience_context }}</span>
+              {% endif %}
+            </div>
+
+            {% if experience.experience_show_company_name %}
+              <div class="experience-company-name">🏢 {{ experience.experience_company_name }}</div>
+            {% else %}
+              <div class="experience-company-name anon">🔒 {{ experience.experience_company_anon }}</div>
+            {% endif %}
+
+            <p class="experience-description">{{ experience.experience_description|safe }}</p>
+            
+            {% if experience.experience_skills.all %}
+              <div class="experience-skills">
+                <strong>🧠 Skills Used:</strong>
+                {% for skill in experience.experience_skills.all %}
+
+                    <span class="badge" title="{{ skill.skill_proficiency.proficiency_name }}">
+                    {{ skill.skill_name }}
+                    </span>
+
+                {% endfor %}
+              </div>
+            {% endif %}
+
+          </div><hr class="experience-separator">
+
+        {% endfor %}
+
 
 {% endblock %}
+
+
+<!-- Field	Icon Suggestion
+Role/Title	👩‍💻 or 🧑‍🏭
+Company Name	🏢
+Dates	📅
+Skills	🛠 or 🧠 or 💡 -->

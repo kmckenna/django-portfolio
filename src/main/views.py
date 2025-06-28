@@ -87,11 +87,11 @@ def project_detail(request, id):
 
 
 def experience_overview(request):
-    workexperience = WorkExperience.objects.filter(is_active=True).order_by('sequence')
+    experiences = WorkExperience.objects.filter(is_active=True).order_by('sequence')
 
 
     return render(request, 'main/experience.html', {
-        'workexperience': workexperience,
+        'experiences': experiences,
     })
 
 

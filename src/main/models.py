@@ -35,11 +35,15 @@ class Page(BaseModel):
 class WorkExperience(BaseModel):
     experience_role = models.TextField(max_length=200)
     experience_company_name = models.TextField(max_length=200)
+    experience_show_company_name = models.BooleanField(default=False)
+    experience_company_anon = models.TextField(max_length=200, null=True, blank=True)
     experience_dates = models.TextField(max_length=200)
     experience_description = HTMLField(max_length=4000) 
+    experience_skills = models.ManyToManyField('Skill', related_name='workexperience', blank=True)
+    experience_context = models.TextField(max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return self.experience_role
+        return f"{self.experience_role}-{self.experience_company_name}"
 
 
 class Proficiency(BaseModel):
@@ -75,6 +79,10 @@ class Project(BaseModel):
     project_name = models.TextField(max_length=200)
     project_description = HTMLField(max_length=4000)
     project_link = models.TextField(max_length=200)
+    project_show_link = models.BooleanField(default=True)
+    project_github_link = models.TextField(max_length=400, blank=True, null=True)
+    project_show_github_link = models.BooleanField(default=True)
+
     # Foreign key to ProjectSection
     project_section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='projects')
     project_skills = models.ManyToManyField('Skill', related_name='projects', blank=True)
